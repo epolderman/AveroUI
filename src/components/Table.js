@@ -45,7 +45,8 @@ class Table extends Component {
     return(
       <div className="Table">
           <div className="TableHeader">
-            <div className="btn-group pull-left">
+          <button className="btn btn-secondary Purple pull-left" onClick={ () => this.props.history.push('/') }>Back to Landing</button>
+            <div className="btn-group pull-right">
             <button
               type="button"
               disabled ={this.state.closedCheckView}
@@ -58,9 +59,9 @@ class Table extends Component {
               className={activeCheckID ? "btn btn-success Purple" : "btn btn-warning"}
               onClick={() => this.showClosedChecks()}>{activeCheckID ? "Show Active Check" : "No Active Check"}
             </button>
+            {activeCheckID ? <button className="btn btn-danger" onClick={() => this.closeCheck(tableid, activeCheckID)}>Close Check</button> :
+            <button className="btn btn-secondary Purple" onClick={() => this.openCheck(tableid)}>Open Check</button>}
           </div>
-            {activeCheckID ? <button className="btn btn-danger pull-right" onClick={() => this.closeCheck(tableid, activeCheckID)}>Close Check</button> :
-            <button className="btn btn-secondary Purple pull-right" onClick={() => this.openCheck(tableid)}>Open Check</button>}
         </div>
         <div className="TableData">
             <hr/>

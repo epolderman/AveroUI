@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Landing from './Landing';
 import Table from './Table';
+import MessageBar from './MessageBar';
 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
+            <MessageBar />
             <Route exact path="/" component={Landing} />
             <Route exact path="/table/:tablenumber/:tableid" component={Table} />
           </div>

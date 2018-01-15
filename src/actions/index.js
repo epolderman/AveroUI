@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_TABLES, FETCH_CHECKS, FETCH_CHECK, CREATE_CHECK, FETCH_ITEMS } from './types';
+import { FETCH_TABLES, FETCH_CHECKS, FETCH_CHECK, CREATE_CHECK, FETCH_ITEMS, CLEAR_MESSAGE, ASYNC_ERROR } from './types';
 
 const ROOT_URL = 'https://check-api.herokuapp.com';
 const AUTH_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxOWNmNGVjLWUxY2QtNDFhZC04NWU5LTU3ODBhMjE4MzZiNyIsIm5hbWUiOiJFcmlrIFBvbGRlcm1hbiJ9.CpEZ14y8_s6u9F5mhPrhBtruNlTIVmzVPDq9afbQbjE';
@@ -10,18 +10,17 @@ export const fetchTables = () => async dispatch => {
   dispatch({ type: FETCH_TABLES, payload: response.data });
   }
   catch(e){
-    console.log("Failed fetchTablesPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
 export const fetchCheck = (checkID) => async dispatch => {
-  console.log("fetchCheck()");
   try{
     const response = await axios.get(ROOT_URL + '/checks/' + checkID, {'headers': {'Authorization' : AUTH_KEY}});
     dispatch({ type: FETCH_CHECK, payload: response.data });
   }
   catch(e){
-    console.log("Failed fetchCheckPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
@@ -31,7 +30,7 @@ export const fetchChecks = () => async dispatch => {
     dispatch({ type: FETCH_CHECKS, payload: response.data });
   }
   catch(e){
-    console.log("Failed fetchChecksPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
@@ -42,7 +41,7 @@ export const fetchItems = () => async dispatch => {
     dispatch({ type: FETCH_ITEMS, payload: response.data });
   }
   catch(e){
-    console.log("Failed fetchIemsPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
@@ -54,7 +53,7 @@ export const addMenuItem = (checkid, menuItemID, callback) => async dispatch => 
     callback();
   }
   catch(e){
-    console.log("Failed fetchItemsPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
@@ -67,7 +66,7 @@ export const voidMenuItem = (checkid, menuItemID, callback) => async dispatch =>
     callback();
   }
   catch(e){
-    console.log("Failed fetchVoidItemsPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
@@ -81,7 +80,7 @@ export const OpenCheckforTable = (stringTableID, callback) => async dispatch => 
     }
   }
   catch(e){
-    console.log("Failed postingOpenCheckPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
 
@@ -95,6 +94,9 @@ export const CloseCheckforTable = (id, callback) => async dispatch => {
     callback();
   }
   catch(e){
-    console.log("Failed postingCloseCheckPromise()");
+    dispatch({type: ASYNC_ERROR});
   }
 }
+
+export const clearMessage = () => dispatch =>
+    dispatch({type: CLEAR_MESSAGE})

@@ -165,3 +165,29 @@ body {
   background-color:rgba(153,50,204,1.0);
   color: white;
 }
+/*Bar Message */
+.error {
+  background-color: rgba(255, 0, 0, 0.8);
+  border-color: rgba(255, 0, 0, 1.0);
+  color: white;
+}
+.BarMessage
+{
+  font-family: 'Roboto', sans-serif;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2.5px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.Hidden {
+   visibility: hidden;
+ }
+ .Shown {
+   visibility: visible;
+ }
