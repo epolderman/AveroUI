@@ -1,0 +1,167 @@
+/*
+Slammed all css into one file for speed.
+Ideally, without the time constraints I would have seperate css files
+and even use sass which would enable mixins + media queries for an even
+more mantainable styling option. I went for speed, plain and simple.
+
+CSS names are directly related to Component Names
+*/
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #2C2E30;
+  font-family: 'Roboto', sans-serif;
+}
+.Landing{
+  margin: 2.5%;
+  padding: 2.5%;
+  background-color: rgba(63,61,66,1.0);
+  border-radius: 2.5px;
+  color: white;
+  text-align: center;
+  overflow: auto;
+}
+/*BootStraps btn-groups and button additional properties*/
+.btn-group{
+  padding-bottom: 2.5%;
+}
+.btn-group button{
+  cursor: pointer;
+}
+.not-active-btn{
+  background-color: #3498db;
+  color: white;
+}
+.active-btn{
+  background-color: white;
+  color: #3498db;
+}
+/*BootStraps list-group additional properties*/
+.list-group-item-available{
+  background-color: #2ecc71;
+  color: white;
+}
+.list-group-item-notAvailable{
+  background-color: #e74c3c;
+  color: white;
+}
+.list-group-item-notAvailable:hover{
+  background-color: #c0392b;
+  color: white;
+}
+.list-group-item-available:hover{
+  background-color: #27ae60;
+  color: white;
+}
+.list-group button{
+  cursor: pointer;
+}
+/*Landing.js (handles styling between views)*/
+.View{
+  width: 100%;
+  height: 100%;
+}
+.View ul{
+  list-style-type: none;
+  width: 50%;
+  float: left;
+}
+.View a{
+  text-decoration: none;
+}
+.WideView{
+  width: 100%;
+  height: 100%;
+}
+.WideView hr{
+  background-color: white;
+}
+/*Landing.js styling the display stats*/
+.Stats{
+  float: left;
+  width: 50%;
+}
+.Stats p{
+  margin: 0;
+  padding: 0;
+}
+.Stats hr{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 0;
+  background-color: #95a5a6;
+}
+.StatsNumber{
+  font-size: 75px;
+  color: #9b59b6;
+}
+/*Table.js*/
+.Table{
+  color: white;
+  margin: 2.5%;
+  padding: 2.5%;
+  text-align: center;
+  background-color: rgba(63,61,66,1.0);
+  overflow: auto;
+  border-radius: 2.5px;
+}
+.TableHeader button{
+  margin-bottom: 1%;
+  cursor: pointer;
+}
+.Table a{
+  text-decoration: none;
+}
+.Table hr{
+  background-color: white;
+}
+.TableData{
+  clear: both;
+}
+.item-list{
+  background-color: #3498db;
+  color: white;
+}
+.ordered-item-list{
+  background-color: #1abc9c;
+  color: white;
+}
+.Menu{
+  float: left;
+  width: 50%;
+  padding: 1%;
+}
+.CheckItems{
+  width: 50%;
+  float: left;
+  padding: 1%;
+}
+.CheckData{
+  background-color: red;
+}
+.CheckDetails span{
+  font-size: 30px;
+  color: #1abc9c;
+}
+.ClosedTables{
+  float: left;
+  width: 50%;
+}
+.ClosedChecks{
+  width: 50%;
+  float: left;
+  padding-right: 1%;
+}
+.ClosedChecksItems{
+  width: 50%;
+  float: right;
+  padding-left: 1%;
+}
+.Purple
+{
+  background-color:rgba(153,50,204,1.0);
+  color: white;
+}
