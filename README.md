@@ -20,7 +20,9 @@
 
 # Implementation Notes
 
-* UI is heavily data driven.
-* Limited animations because server's need quick information.
+* UI is data driven.
+* Limited animations because server's need information ASAP.
 * Used bootstrap styling because of the responsive behavior (did not use BS js).
 * Flat UI colors were used because server's need to be able to look down at the tablet and back up to customers.
+* Some stylings were rushed and less comments were written because of job/onsite inteviews this week.
+* This was very fun, thank you, and have a good day.
