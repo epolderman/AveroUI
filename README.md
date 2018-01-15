@@ -25,7 +25,7 @@
 * Limited animations because server's need information ASAP.
 * Used bootstrap styling because of the responsive behavior (did not use BS js).
 * Flat UI colors were used because server's need to be able to look down at the tablet and back up to customers.
-* Aysnc/Promise Errors are handled via MessageBar and this is hooked directly into app state to
+* Async/Promise Errors are handled via MessageBar and this is hooked directly into app state to
 notify users when their actions/backend req fail.
 
 # Time Constraints
