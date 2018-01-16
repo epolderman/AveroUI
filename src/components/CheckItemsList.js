@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingModule from './LoadingModule';
 
 //dumb component handles displaying item list for an active check and closed checks(reusable)
 
@@ -44,9 +45,9 @@ export default (props) => {
           </span>
         </li> );}) }
   else
-  return(<div>Loading Items...</div>);
+  return(<div className="LoadingContainer"><LoadingModule text={"Loading Items"}/></div>);
 else
-return(<div>Choose a Check to view Items</div>);
+return(<div>Choose a check to see Items</div>);
 
 }
 

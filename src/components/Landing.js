@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ChecksList from './ChecksList';
 import TablesList from './TablesList';
 import StatDisplay from './StatDisplay';
+import LoadingModule from './LoadingModule';
 
 //High Order Component that passes data downward
 //Manages views for open tables, open checks, closed checks
@@ -50,6 +51,9 @@ class Landing extends Component{
 
   render(){
     const {tables, checks} = this.props;
+    if(!tables && !checks)
+    return(<div className="LoadingContainer"><LoadingModule text={"Loading Tables"}/></div>)
+    else
     return(
           <div className="Landing">
             <div className="btn-group" role="group" aria-label="Trigger View">
@@ -78,7 +82,7 @@ class Landing extends Component{
                   disabled={this.state.sortedClosed}
                   onClick={this.sortedClosed} type="button"
                   className={this.state.sortedClosed ? "btn btn-secondary active-btn" : "btn btn-secondary not-active-btn"}>Closed</button>
-                  </div>
+                </div>
               </div> : <span></span>}
             <div className={this.state.isTableView ? "View" : "WideView"}>
               <ul className="list-group">

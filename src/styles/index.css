@@ -6,8 +6,6 @@ more mantainable styling option. I went for speed, plain and simple.
 
 CSS names are directly related to Component Names
 */
-
-
 body {
   margin: 0;
   padding: 0;
@@ -191,3 +189,14 @@ body {
  .Shown {
    visibility: visible;
  }
+ .loadingModule{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+  .loadingModule h6{
+    padding-top: 1%;
+  }
