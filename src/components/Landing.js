@@ -15,33 +15,42 @@ class Landing extends Component{
 
   constructor(props){
     super(props);
-    this.state = {isTableView: true, sortedAll: true, sortedClosed: false, sortedOpen: false};
+    this.state = {isTableView: true, sortedAll: true, sortedClosed: false, sortedOpen: false, inputSearchCheck: ""};
     //bind early(optimization)
     this.showTableView = this.showTableView.bind(this);
     this.sortedOpen = this.sortedOpen.bind(this);
     this.sortedClosed = this.sortedClosed.bind(this);
     this.sortedAll = this.sortedAll.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
   }
 
   showTableView(){
     if(!this.state.isTableView){
     this.setState({isTableView: true, sortedAll: this.state.sortedAll,
-                  sortedClosed: this.state.sortedClosed, sortedOpen: this.state.sortedOpen});}
+    sortedClosed: this.state.sortedClosed, sortedOpen: this.state.sortedOpen, inputSearchCheck: this.state.inputSearchCheck});}
     else{
     this.setState({isTableView: false, sortedAll: this.state.sortedAll,
-                  sortedClosed: this.state.sortedClosed, sortedOpen: this.state.sortedOpen});}
+    sortedClosed: this.state.sortedClosed, sortedOpen: this.state.sortedOpen,inputSearchCheck: this.state.inputSearchCheck});}
   }
 
   sortedOpen(){
-    this.setState({isTableView: this.state.isTableView, sortedAll: false, sortedClosed: false, sortedOpen: true});
+    this.setState({isTableView: this.state.isTableView,
+    sortedAll: false, sortedClosed: false, sortedOpen: true, inputSearchCheck: ''});
   }
 
   sortedClosed(){
-    this.setState({isTableView: this.state.isTableView, sortedAll: false, sortedClosed: true, sortedOpen: false});
+    this.setState({isTableView: this.state.isTableView,
+    sortedAll: false, sortedClosed: true, sortedOpen: false, inputSearchCheck: ''});
   }
 
   sortedAll(){
-    this.setState({isTableView: this.state.isTableView, sortedAll: true, sortedClosed: false, sortedOpen: false});
+    this.setState({isTableView: this.state.isTableView,
+    sortedAll: true, sortedClosed: false, sortedOpen: false, inputSearchCheck: ''});
+  }
+
+  updateInputValue(evt){
+    this.setState({isTableView: this.state.isTableView, sortedAll: false,
+    sortedClosed: false, sortedOpen: false, inputSearchCheck: evt.target.value});
   }
 
   componentDidMount(){
@@ -84,6 +93,10 @@ class Landing extends Component{
                   className={this.state.sortedClosed ? "btn btn-secondary active-btn" : "btn btn-secondary not-active-btn"}>Closed</button>
                 </div>
               </div> : <span></span>}
+              { !this.state.isTableView ?
+              <input type="text" className="form-control" placeholder="Search by Table Number" aria-label="Search by Table Number"
+              aria-describedby="basic-addon1"
+              value={this.state.inputSearchCheck} onChange={evt => this.updateInputValue(evt)}/> : <span></span> }
             <div className={this.state.isTableView ? "View" : "WideView"}>
               <ul className="list-group">
                 {this.state.isTableView ? <TablesList tables={tables} checks={checks}/> :
@@ -93,7 +106,8 @@ class Landing extends Component{
                 isAllSorted={this.state.sortedAll}
                 isAllCheckView={true}
                 tables={tables}
-                checks={checks} />}
+                checks={checks}
+                tableSearchValue={this.state.inputSearchCheck} />}
               </ul>
             </div>
             <div className="Stats">

@@ -29,3 +29,8 @@
 * Async/Promise Errors are handled via MessageBar and this is hooked directly into app state to
 notify users when their actions/backend req fail.
 * Some stylings were rushed and less comments were written. (mobile was not implemented)
+
+# Main Features
+* Landing: Users can view all open tables. User can view all checks and sort them via Open, Closed, All, and by Tablenumber.
+User can see all items on a check whether its state(open, closed) and whether items are void. There are stats showing the user need to know information on main landing page. 
+* Table: Users can open check, add items to check, close check. Users can also see all closed checks on the table.

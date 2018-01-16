@@ -25,6 +25,28 @@ class CheckList extends Component {
 
     renderList(){
 
+      if(this.props.tableSearchValue !== '' && !this.props.tableid){
+        return _.map(this.props.checks, (check) => {
+
+              let tableID = findChecksViaTableNumber(this.props.tables, this.props.tableSearchValue)
+              if(tableID && tableID === check.tableId)
+              return (
+                <li
+                key={check.id}
+                className={!check.closed ? "list-group-item justify-content-between list-group-item-available" :
+                "list-group-item justify-content-between list-group-item-notAvailable"}>
+                      {check.closed ? 'Table ' + this.props.tableSearchValue + ' (Closed)' : 'Table ' + this.props.tableSearchValue + ' (Open)'}
+                      <span className="badge">
+                      <button className="btn btn-secondary"
+                      disabled={check.id === this.state.checkID}
+                      type="button"
+                      onClick={() => this.findOrderedItems(check.id) }>{check.id !== this.state.checkID ? "View Check" : "Viewing"}</button>
+                      </span>
+                </li> );
+            });
+      }
+
+
       //view all Closed checks(Landing)
       if(this.props.isCloseSorted && !this.props.tableid){
       let closedCheckList = _.map(this.props.checks, (check) => {
@@ -152,5 +174,19 @@ function findTableNumber(tables, check){
 
   return tableNumber;
 }
+
+function findChecksViaTableNumber(tables, tablenumber){
+
+  let number = Number(tablenumber);
+  let tableID = '';
+
+  for(let table in tables){
+    if(tables[table].number === number)
+    tableID = tables[table].id;
+  }
+
+  return tableID;
+}
+
 
 export default connect(mapStateToProps,{ fetchCheck, fetchItems })(CheckList);

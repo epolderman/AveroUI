@@ -22,6 +22,11 @@ body {
   text-align: center;
   overflow: auto;
 }
+.Landing input{
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
 /*BootStraps btn-groups and button additional properties*/
 .btn-group{
   padding-bottom: 2.5%;
