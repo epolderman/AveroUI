@@ -8,6 +8,7 @@
 
 * [CreateReactApp](https://github.com/facebookincubator/create-react-app) - Frontend React UI
 * [Redux](https://redux.js.org/) - Frontend State Management
+* [ReduxThunk](https://github.com/gaearon/redux-thunk) - Async Request Redux State Management(get ahold of dispatch function)
 * [Node](https://nodejs.org/en/) - Node Package Manager
 * [Bootstrap](https://v4-alpha.getbootstrap.com/) - Responsive Styling
 * [Axios](https://github.com/axios/axios) - Async Library
