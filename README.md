@@ -27,7 +27,4 @@
 * Flat UI colors were used because server's need to be able to look down at the tablet and back up to customers.
 * Async/Promise Errors are handled via MessageBar and this is hooked directly into app state to
 notify users when their actions/backend req fail.
-
-# Time Constraints
-* Some stylings were rushed and less comments were written because of job/onsite inteviews this week.
-* This was very fun, thank you, and have a good day.
+* Some stylings were rushed and less comments were written. (mobile was not implemented)
