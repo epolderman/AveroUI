@@ -35,8 +35,8 @@ export default (props) => {
       return (
         <li key={index} className="list-group-item justify-content-between ordered-item-list">
           {
-          singleItem.hasOwnProperty('tax') ? "Tax: $" + singleItem.tax :
-          singleItem.hasOwnProperty('tip') ? "Tip: $" + singleItem.tip :
+          singleItem.hasOwnProperty('tax') ? "Tax: $ new feature" + singleItem.tax :
+          singleItem.hasOwnProperty('tip') ? "Tip: $ new feature" + singleItem.tip :
           itemObj ? itemObj.name + " ($" + itemObj.price + ")" :
           <span></span>
           }
