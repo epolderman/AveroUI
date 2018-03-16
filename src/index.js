@@ -6,11 +6,14 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
-import reduxObservable from 'redux-observable'; //here
+import createEpicMiddleware from 'redux-observable'; //here
 import reducers from './reducers';
 import { Provider } from 'react-redux';
+import { root } from './epics';
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+//const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const epicMiddleware = createEpicMiddleware(root);
+const store = createStore(reducers, {}, applyMiddleware(epicMiddleware));
 
 ReactDOM.render(
   <Provider store={store}>
