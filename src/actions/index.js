@@ -11,6 +11,7 @@ import {
   FETCH_CHECKS_COMPLETE,
   FETCH_CHECK_COMPLETE,
   CREATE_CHECK_COMPLETE,
+  FETCH_ITEMS_COMPLETE,
 } from './types';
 
 const ROOT_URL = 'https://check-api.herokuapp.com';
@@ -19,48 +20,32 @@ const AUTH_KEY =
 
 export { ROOT_URL, AUTH_KEY };
 
-//action creators
+//tables
 export function getTables() {
-  console.log('getTables()');
   return { type: FETCH_TABLES };
 }
 
 export function setTables(tables) {
-  console.log('setTables()');
   return {
     type: FETCH_TABLES_COMPLETE,
     payload: tables.response,
   };
 }
 
-//action creators
+//checks
 export function getChecks() {
-  console.log('getChecks()');
   return { type: FETCH_CHECKS };
 }
 
 export function setChecks(checks) {
-  console.log('setChecks()');
   return {
     type: FETCH_CHECKS_COMPLETE,
     payload: checks.response,
   };
 }
 
-//done
-export const fetchTables = () => async dispatch => {
-  try {
-    const response = await axios.get(ROOT_URL + '/tables', {
-      headers: { Authorization: AUTH_KEY },
-    });
-    dispatch({ type: FETCH_TABLES, payload: response.data });
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
-};
-
+//check
 export const getCheck = id => {
-  console.log('getCheck() ' + id);
   return {
     type: FETCH_CHECK,
     payload: id,
@@ -68,45 +53,22 @@ export const getCheck = id => {
 };
 
 export const setCheck = check => {
-  console.log('setCheck()');
   return {
     type: FETCH_CHECK_COMPLETE,
     payload: check.response,
   };
 };
 
-export const fetchCheck = checkID => async dispatch => {
-  try {
-    const response = await axios.get(ROOT_URL + '/checks/' + checkID, {
-      headers: { Authorization: AUTH_KEY },
-    });
-    dispatch({ type: FETCH_CHECK, payload: response.data });
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
+//items
+export const getItems = () => {
+  return { type: FETCH_ITEMS };
 };
 
-//done
-export const fetchChecks = () => async dispatch => {
-  try {
-    const response = await axios.get(ROOT_URL + '/checks', {
-      headers: { Authorization: AUTH_KEY },
-    });
-    dispatch({ type: FETCH_CHECKS, payload: response.data });
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
-};
-
-export const fetchItems = () => async dispatch => {
-  try {
-    const response = await axios.get(ROOT_URL + '/items', {
-      headers: { Authorization: AUTH_KEY },
-    });
-    if (response) dispatch({ type: FETCH_ITEMS, payload: response.data });
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
+export const setItems = items => {
+  return {
+    type: FETCH_ITEMS_COMPLETE,
+    payload: items.response,
+  };
 };
 
 export const addMenuItem = (checkid, menuItemID, callback) => async dispatch => {
@@ -137,9 +99,9 @@ export const voidMenuItem = (checkid, menuItemID, callback) => async dispatch =>
   }
 };
 
+//open check
 export const openCheck = stringTableID => {
   const id = { tableId: stringTableID };
-  console.log('openCheck()');
   return {
     type: CREATE_CHECK,
     payload: id,
@@ -147,26 +109,10 @@ export const openCheck = stringTableID => {
 };
 
 export const completeOpenCheck = check => {
-  console.log('completeOpenCheck()');
   return {
     type: CREATE_CHECK_COMPLETE,
     payload: check.response,
   };
-};
-
-export const OpenCheckforTable = (stringTableID, callback) => async dispatch => {
-  const id = { tableId: stringTableID };
-  try {
-    const response = await axios.post(ROOT_URL + '/checks', id, {
-      headers: { Authorization: AUTH_KEY },
-    });
-    if (response) {
-      dispatch({ type: CREATE_CHECK, payload: response.data });
-      callback();
-    }
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
 };
 
 //Notes: No dispatch call for close check because in Redux we do NOT want to mutate our state.

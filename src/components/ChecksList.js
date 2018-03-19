@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchItems, getCheck } from '../actions/index';
+import { getItems, getCheck } from '../actions/index';
 import _ from 'lodash';
 import CheckItemsList from './CheckItemsList';
 
@@ -19,7 +19,7 @@ class CheckList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchItems();
+    this.props.getItems();
   }
 
   renderList() {
@@ -233,4 +233,4 @@ function findChecksViaTableNumber(tables, tablenumber) {
   return tableID;
 }
 
-export default connect(mapStateToProps, { getCheck, fetchItems })(CheckList);
+export default connect(mapStateToProps, { getCheck, getItems })(CheckList);

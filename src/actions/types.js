@@ -7,5 +7,6 @@ export const FETCH_CHECK_COMPLETE = 'fetch_check_complete';
 export const CREATE_CHECK = 'create_check';
 export const CREATE_CHECK_COMPLETE = 'create_check_completion';
 export const FETCH_ITEMS = 'fetch_items';
+export const FETCH_ITEMS_COMPLETE = 'fetch_items_complete';
 export const ASYNC_ERROR = 'async_error';
 export const CLEAR_MESSAGE = 'clear_message';

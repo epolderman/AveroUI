@@ -3,7 +3,7 @@ import {
   addMenuItem,
   fetchCheck,
   voidMenuItem,
-  fetchItems,
+  getItems,
   getCheck,
 } from '../actions/index';
 import { connect } from 'react-redux';
@@ -22,7 +22,7 @@ class Check extends Component {
 
   componentDidMount() {
     this.props.getCheck(this.props.activeCheckID);
-    this.props.fetchItems();
+    this.props.getItems();
   }
 
   addItemtoCheck(menuItemID) {
@@ -93,6 +93,6 @@ function mapStateToProps(state, ownProps) {
 export default connect(mapStateToProps, {
   addMenuItem,
   voidMenuItem,
-  fetchItems,
+  getItems,
   getCheck,
 })(Check);
