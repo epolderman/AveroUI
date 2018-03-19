@@ -115,9 +115,6 @@ export const completeOpenCheck = check => {
   };
 };
 
-//Notes: No dispatch call for close check because in Redux we do NOT want to mutate our state.
-//We can invoke fetchPosts callback which will return our newly updated state via the backend.
-//React will detect that change and re-render.
 export const CloseCheckforTable = (id, callback) => async dispatch => {
   try {
     const response = await axios.put(ROOT_URL + '/checks/' + id + '/close', id, {
@@ -129,4 +126,6 @@ export const CloseCheckforTable = (id, callback) => async dispatch => {
   }
 };
 
-export const clearMessage = () => dispatch => dispatch({ type: CLEAR_MESSAGE });
+export const clearMessage = () => {
+  return { type: CLEAR_MESSAGE };
+};
