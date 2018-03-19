@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchChecks, fetchTables, getTables, getChecks } from '../actions/index';
+import { getTables, getChecks } from '../actions/index';
 import { connect } from 'react-redux';
 import ChecksList from './ChecksList';
 import TablesList from './TablesList';

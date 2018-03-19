@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 //epic
 export const fetchTablesEpic = action$ =>
-  action$.ofType(FETCH_TABLES).mergeMap(({ payload }) =>
+  action$.ofType(FETCH_TABLES).mergeMap(action =>
     Observable.ajax({
       method: 'GET',
       url: ROOT_URL + '/tables',
@@ -12,7 +12,7 @@ export const fetchTablesEpic = action$ =>
       headers: {
         Authorization: AUTH_KEY,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(action.payload),
     })
       .map(promise => setTables(promise))
       .catch(error =>

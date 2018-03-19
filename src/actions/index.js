@@ -9,6 +9,8 @@ import {
   ASYNC_ERROR,
   FETCH_TABLES_COMPLETE,
   FETCH_CHECKS_COMPLETE,
+  FETCH_CHECK_COMPLETE,
+  CREATE_CHECK_COMPLETE,
 } from './types';
 
 const ROOT_URL = 'https://check-api.herokuapp.com';
@@ -55,6 +57,22 @@ export const fetchTables = () => async dispatch => {
   } catch (e) {
     dispatch({ type: ASYNC_ERROR });
   }
+};
+
+export const getCheck = id => {
+  console.log('getCheck() ' + id);
+  return {
+    type: FETCH_CHECK,
+    payload: id,
+  };
+};
+
+export const setCheck = check => {
+  console.log('setCheck()');
+  return {
+    type: FETCH_CHECK_COMPLETE,
+    payload: check.response,
+  };
 };
 
 export const fetchCheck = checkID => async dispatch => {
@@ -117,6 +135,23 @@ export const voidMenuItem = (checkid, menuItemID, callback) => async dispatch =>
   } catch (e) {
     dispatch({ type: ASYNC_ERROR });
   }
+};
+
+export const openCheck = stringTableID => {
+  const id = { tableId: stringTableID };
+  console.log('openCheck()');
+  return {
+    type: CREATE_CHECK,
+    payload: id,
+  };
+};
+
+export const completeOpenCheck = check => {
+  console.log('completeOpenCheck()');
+  return {
+    type: CREATE_CHECK_COMPLETE,
+    payload: check.response,
+  };
 };
 
 export const OpenCheckforTable = (stringTableID, callback) => async dispatch => {
