@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/src/Utils
+/src/Utils/*
 
 # testing
 /coverage
