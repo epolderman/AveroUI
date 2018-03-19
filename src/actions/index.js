@@ -12,6 +12,9 @@ import {
   FETCH_CHECK_COMPLETE,
   CREATE_CHECK_COMPLETE,
   FETCH_ITEMS_COMPLETE,
+  VOID_ITEM,
+  ADD_ITEM,
+  CLOSE_CHECK,
 } from './types';
 
 const ROOT_URL = 'https://check-api.herokuapp.com';
@@ -32,7 +35,7 @@ export function setTables(tables) {
   };
 }
 
-//checks
+//checkS
 export function getChecks() {
   return { type: FETCH_CHECKS };
 }
@@ -44,7 +47,7 @@ export function setChecks(checks) {
   };
 }
 
-//check
+//check(single)
 export const getCheck = id => {
   return {
     type: FETCH_CHECK,
@@ -71,32 +74,25 @@ export const setItems = items => {
   };
 };
 
-export const addMenuItem = (checkid, menuItemID, callback) => async dispatch => {
+export const getItemtoAdd = (checkid, menuItemID, callback) => {
   const fullItemID = { itemId: menuItemID };
-  try {
-    const response = await axios.put(
-      ROOT_URL + '/checks/' + checkid + '/addItem',
-      fullItemID,
-      { headers: { Authorization: AUTH_KEY } }
-    );
-    if (response) callback();
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
+  return {
+    type: ADD_ITEM,
+    payload: fullItemID,
+    check: checkid,
+    callbacktoInvoke: callback,
+  };
 };
 
-export const voidMenuItem = (checkid, menuItemID, callback) => async dispatch => {
+//items
+export const getItemtoVoid = (checkid, menuItemID, callback) => {
   const fullItemIDtoVoid = { orderedItemId: menuItemID };
-  try {
-    const response = await axios.put(
-      ROOT_URL + '/checks/' + checkid + '/voidItem',
-      fullItemIDtoVoid,
-      { headers: { Authorization: AUTH_KEY } }
-    );
-    if (response) callback();
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
+  return {
+    type: VOID_ITEM,
+    payload: fullItemIDtoVoid,
+    check: checkid,
+    callbacktoInvoke: callback,
+  };
 };
 
 //open check
@@ -115,15 +111,12 @@ export const completeOpenCheck = check => {
   };
 };
 
-export const CloseCheckforTable = (id, callback) => async dispatch => {
-  try {
-    const response = await axios.put(ROOT_URL + '/checks/' + id + '/close', id, {
-      headers: { Authorization: AUTH_KEY },
-    });
-    if (response) callback();
-  } catch (e) {
-    dispatch({ type: ASYNC_ERROR });
-  }
+export const closeThisCheck = (id, callback) => {
+  return {
+    type: CLOSE_CHECK,
+    payload: id,
+    callbacktoInvoke: callback,
+  };
 };
 
 export const clearMessage = () => {

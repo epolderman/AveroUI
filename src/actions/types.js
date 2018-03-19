@@ -10,3 +10,6 @@ export const FETCH_ITEMS = 'fetch_items';
 export const FETCH_ITEMS_COMPLETE = 'fetch_items_complete';
 export const ASYNC_ERROR = 'async_error';
 export const CLEAR_MESSAGE = 'clear_message';
+export const VOID_ITEM = 'void_item';
+export const ADD_ITEM = 'add_item';
+export const CLOSE_CHECK = 'close_check';

@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  addMenuItem,
-  fetchCheck,
-  voidMenuItem,
-  getItems,
-  getCheck,
-} from '../actions/index';
+import { getItems, getCheck, getItemtoVoid, getItemtoAdd } from '../actions/index';
 import { connect } from 'react-redux';
 import MenuItem from './MenuItem';
 import CheckItemsList from './CheckItemsList';
@@ -27,14 +21,14 @@ class Check extends Component {
 
   addItemtoCheck(menuItemID) {
     const { activeCheckID } = this.props;
-    this.props.addMenuItem(activeCheckID, menuItemID, () =>
+    this.props.getItemtoAdd(activeCheckID, menuItemID, () =>
       this.props.getCheck(activeCheckID)
     );
   }
 
   voidItemOnCheck(menuItemID) {
     const { activeCheckID } = this.props;
-    this.props.voidMenuItem(activeCheckID, menuItemID, () =>
+    this.props.getItemtoVoid(activeCheckID, menuItemID, () =>
       this.props.getCheck(activeCheckID)
     );
   }
@@ -91,8 +85,8 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps, {
-  addMenuItem,
-  voidMenuItem,
   getItems,
   getCheck,
+  getItemtoVoid,
+  getItemtoAdd,
 })(Check);

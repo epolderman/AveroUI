@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CloseCheckforTable, openCheck, getChecks } from '../actions/index';
+import { openCheck, getChecks, closeThisCheck } from '../actions/index';
 import { connect } from 'react-redux';
 import Check from './Check';
 import ChecksList from './ChecksList';
@@ -31,7 +31,7 @@ class Table extends Component {
   }
 
   closeCheck(tableid, checkidToClose) {
-    this.props.CloseCheckforTable(checkidToClose, this.props.getChecks);
+    this.props.closeThisCheck(checkidToClose, this.props.getChecks);
     if (!this.state.closedCheckView) this.setState({ closedCheckView: true });
   }
 
@@ -118,7 +118,7 @@ function findActiveCheck(checks, tableid) {
 }
 
 export default connect(mapStateToProps, {
-  CloseCheckforTable,
+  closeThisCheck,
   openCheck,
   getChecks,
 })(Table);
