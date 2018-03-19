@@ -7,6 +7,8 @@ import {
   FETCH_ITEMS,
   CLEAR_MESSAGE,
   ASYNC_ERROR,
+  FETCH_TABLES_COMPLETE,
+  FETCH_CHECKS_COMPLETE,
 } from './types';
 
 const ROOT_URL = 'https://check-api.herokuapp.com';
@@ -15,6 +17,35 @@ const AUTH_KEY =
 
 export { ROOT_URL, AUTH_KEY };
 
+//action creators
+export function getTables() {
+  console.log('getTables()');
+  return { type: FETCH_TABLES };
+}
+
+export function setTables(tables) {
+  console.log('setTables()');
+  return {
+    type: FETCH_TABLES_COMPLETE,
+    payload: tables.response,
+  };
+}
+
+//action creators
+export function getChecks() {
+  console.log('getChecks()');
+  return { type: FETCH_CHECKS };
+}
+
+export function setChecks(checks) {
+  console.log('setChecks()');
+  return {
+    type: FETCH_CHECKS_COMPLETE,
+    payload: checks.response,
+  };
+}
+
+//done
 export const fetchTables = () => async dispatch => {
   try {
     const response = await axios.get(ROOT_URL + '/tables', {
@@ -37,6 +68,7 @@ export const fetchCheck = checkID => async dispatch => {
   }
 };
 
+//done
 export const fetchChecks = () => async dispatch => {
   try {
     const response = await axios.get(ROOT_URL + '/checks', {

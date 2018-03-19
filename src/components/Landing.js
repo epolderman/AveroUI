@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { fetchChecks, fetchTables } from '../actions/index';
-import { getTables } from '../epics/fetchTablesEpic';
+import { fetchChecks, fetchTables, getTables, getChecks } from '../actions/index';
 import { connect } from 'react-redux';
 import ChecksList from './ChecksList';
 import TablesList from './TablesList';
@@ -91,14 +90,13 @@ class Landing extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchChecks();
-    //this.props.fetchTables();
+    this.props.getChecks();
     this.props.getTables();
   }
 
   render() {
     const { tables, checks } = this.props;
-    if (!tables && !checks)
+    if (!tables || !checks)
       return (
         <div className="LoadingContainer">
           <LoadingModule text={'Loading Tables'} />
@@ -231,4 +229,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchChecks, getTables })(Landing);
+export default connect(mapStateToProps, { getChecks, getTables })(Landing);

@@ -1,20 +1,6 @@
-import { FETCH_TABLES, FETCH_TABLES_COMPLETE } from '../actions/types';
-import { ROOT_URL, AUTH_KEY } from '../actions/index';
+import { FETCH_TABLES, FETCH_TABLES_COMPLETE, ASYNC_ERROR } from '../actions/types';
+import { ROOT_URL, AUTH_KEY, getTables, setTables } from '../actions/index';
 import { Observable } from 'rxjs';
-
-//action creators
-export function getTables() {
-  console.log('getTables()');
-  return { type: FETCH_TABLES };
-}
-
-export function setTables(tables) {
-  console.log('setTables()');
-  return {
-    type: FETCH_TABLES_COMPLETE,
-    payload: tables.response,
-  };
-}
 
 //epic
 export const fetchTablesEpic = action$ =>
@@ -27,5 +13,11 @@ export const fetchTablesEpic = action$ =>
         Authorization: AUTH_KEY,
       },
       body: JSON.stringify(payload),
-    }).map(promise => setTables(promise))
+    })
+      .map(promise => setTables(promise))
+      .catch(error =>
+        Observable.of({
+          type: ASYNC_ERROR,
+        })
+      )
   );
