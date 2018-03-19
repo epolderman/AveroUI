@@ -11,7 +11,6 @@
 * [ReduxObservable](https://redux-observable.js.org/docs/basics/Epics.html) - Epics providing a stream of actions in and actions out which is how I handle all async operations.
 * [Node](https://nodejs.org/en/) - Node Package Manager
 * [Bootstrap](https://v4-alpha.getbootstrap.com/) - Responsive Styling
-* [Axios](https://github.com/axios/axios) - Async Library
 * [Lodash](https://lodash.com/) - JS Object Manipulation
 
 # How to run
