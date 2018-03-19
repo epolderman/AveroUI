@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { AUTH_KEY, ROOT_URL } from '../Utils/keys';
 import {
   FETCH_TABLES,
   FETCH_CHECKS,
@@ -16,10 +16,6 @@ import {
   ADD_ITEM,
   CLOSE_CHECK,
 } from './types';
-
-const ROOT_URL = 'https://check-api.herokuapp.com';
-const AUTH_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxOWNmNGVjLWUxY2QtNDFhZC04NWU5LTU3ODBhMjE4MzZiNyIsIm5hbWUiOiJFcmlrIFBvbGRlcm1hbiJ9.CpEZ14y8_s6u9F5mhPrhBtruNlTIVmzVPDq9afbQbjE';
 
 export { ROOT_URL, AUTH_KEY };
 

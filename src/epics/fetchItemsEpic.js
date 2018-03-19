@@ -1,5 +1,6 @@
 import { FETCH_ITEMS, ASYNC_ERROR } from '../actions/types';
-import { ROOT_URL, AUTH_KEY, setItems } from '../actions/index';
+import { ROOT_URL, AUTH_KEY } from '../Utils/keys';
+import { setItems } from '../actions/index';
 import { Observable } from 'rxjs';
 
 //epic

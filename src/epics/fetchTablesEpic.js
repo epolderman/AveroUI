@@ -1,5 +1,6 @@
 import { FETCH_TABLES, FETCH_TABLES_COMPLETE, ASYNC_ERROR } from '../actions/types';
-import { ROOT_URL, AUTH_KEY, getTables, setTables } from '../actions/index';
+import { ROOT_URL, AUTH_KEY } from '../Utils/keys';
+import { getTables, setTables } from '../actions/index';
 import { Observable } from 'rxjs';
 
 //epic

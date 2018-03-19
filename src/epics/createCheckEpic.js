@@ -1,5 +1,6 @@
 import { CREATE_CHECK, ASYNC_ERROR } from '../actions/types';
-import { ROOT_URL, AUTH_KEY, completeOpenCheck } from '../actions/index';
+import { ROOT_URL, AUTH_KEY } from '../Utils/keys';
+import { completeOpenCheck } from '../actions/index';
 import { Observable } from 'rxjs';
 
 //epic
