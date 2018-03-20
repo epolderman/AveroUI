@@ -10,7 +10,6 @@ import reducers from './reducers';
 import { Provider } from 'react-redux';
 import { rootEpic } from './epics/rootEpic';
 
-//const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 const epicMiddleware = createEpicMiddleware(rootEpic);
 const store = createStore(reducers, {}, applyMiddleware(epicMiddleware));
 ReactDOM.render(
